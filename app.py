@@ -15,6 +15,8 @@ def index():
             next_image()
         if request.form.get('prev'):
             previous_image()
+        if request.form.get('refresh_image'):
+            update_current_image_file()
     time.sleep(0.4) # Waits for image to be reloaded
     return render_template("index.html", current_image_name=get_current_image_name())
 

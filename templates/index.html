@@ -53,8 +53,8 @@
                         <img src="{{ url_for('custom_static', filename=current_image_name) }}" align="middle" width="300px" />
                     </a>
                     <p>Name: {{ current_image_name }}</p>
-                    <form style="color:black;text-align:center;">
-                        <button type="submit">Refresh</button>
+                    <form method="post" style="color:black;text-align:center;">
+                        <button type="submit" name="refresh_image" value="1">Refresh</button>
                     </form>
                 </aside>
 
