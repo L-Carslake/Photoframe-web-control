@@ -40,15 +40,22 @@
                 <article>
                     <header>
                         <h1>Controls</h1>
-                        <p>Insert controls here</p>
-                        <form method="post">
-                            <button type="submit" name="prev" value="1">Previous image</button>
-                            <button type="submit" name="next" value="1">Next image</button>
-
-                        </form>
                     </header>
+                    <form method="post">
+                        <button type="submit" name="prev" value="1">Previous</button>
+                        <button type="submit" name="next" value="1">Next</button>
+                    </form>
                 </article>
-                <aside>Test aside</aside>
+                <aside>
+                    <h2>Current Image</h2>
+                    <a href="{{ url_for('custom_static', filename=current_image_name) }}">
+                        <img src="{{ url_for('custom_static', filename=current_image_name) }}" align="middle" width="300px" />
+                    </a>
+                    <p>Name: {{ current_image_name }}</p>
+                    <form style="color:black;text-align:center;">
+                        <button type="submit">Refresh</button>
+                    </form>
+                </aside>
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
