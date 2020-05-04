@@ -64,9 +64,8 @@
   * [Installation](#installation)
 * [Usage](#usage)
 * [Theory of Operation](#theory-of-operation)
-* [License](#license)
 * [Roadmap](#roadmap)
-* 
+* [License](#license)
 
 
 
@@ -166,8 +165,8 @@ Returns a JSON file with current state information, some lines removed:
 ```json
 {  "status": "play",
            "title": "Photoframe",
-           "artist": get_current_image_name(), 
-           "albumart": "/cdn/" + get_current_image_name()
+           "artist": "CURRENT_IMAGE_FILENAME", 
+           "albumart": "RELATIVE_PATH_TO_IMAGE"
          }
 ```
 
