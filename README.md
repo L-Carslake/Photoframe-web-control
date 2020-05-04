@@ -31,14 +31,8 @@
 
 
 
-<!-- PROJECT LOGO -->
-<!--
-<br />
-<p align="center">
-  <a href="https://github.com/L-Carslake/Photoframe-web-control">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
--->
+<!-- PROJECT INTRO -->
+
 
   <h3 align="center">Photoframe: Web interface and API</h3>
 
@@ -56,11 +50,10 @@
     <a href="https://github.com/L-Carslake/Photoframe-web-control/issues">Request Feature</a>
     -->
   </p>
-</p>
-
 
 
 <!-- TABLE OF CONTENTS -->
+
 ## Table of Contents
 
 * [About the Project](#about-the-project)
@@ -69,15 +62,15 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
+* [Theory of Operation](#theory-of-operation)
 * [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
+* [Roadmap](#roadmap)
+* 
 
 
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 An addition for the digital photoframe project; based on a [feh](https://feh.finalrewind.org) slideshow. Providing control for next/previous image and viewing the current image.
 Implemented as a web page, and REST API.  
@@ -106,7 +99,7 @@ feh --slideshow-delay 600 --action ";echo %f > /Images/currentImage.txt" /Images
 ```
 
 ### Installation
- 
+
 1. Clone the Photoframe-web-control repo
 ```sh
 git clone https://github.com/L-Carslake/Photoframe-web-control.git
@@ -126,8 +119,7 @@ With the server running you can access the link printed by the script or http://
 ## Theory of Operation
 
 ### Feh Slideshow
-Feh is a basic image viewer. This project sends keyboard shortcuts to feh controlling the slideshow.
-[Documentation of the keyboard shortcuts](https://man.finalrewind.org/1/feh/#keys).
+Feh is a basic image viewer. Controlled using keyboard shortcuts, which are sent from this python script using the PyUserInput library. [Documentation of  feh keyboard shortcuts](https://man.finalrewind.org/1/feh/#keys). Implemented are, next, previous, and action0.ln
 
 The image that is currently being viewed is written to a file for reading by the python script. Feh implements this as an  action, controlled as a command line argument:
 ```sh
@@ -137,14 +129,14 @@ When called the current image name is written to the "/Images/currentImage.txt" 
 
 ### Flask server
  - Webpage with functions
- 
+
 ### REST API
  - Homeassistant
  - Volumio API
  - URLS
 
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 See the [open issues](https://github.com/L-Carslake/Photoframe-web-control/issues) for a list of proposed features (and known issues).
@@ -155,26 +147,3 @@ See the [open issues](https://github.com/L-Carslake/Photoframe-web-control/issue
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-
-
-<!-- CONTACT -->
-
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
