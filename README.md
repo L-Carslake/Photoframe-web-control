@@ -136,7 +136,7 @@ Flask is a micro-webframework for Python. This allows for easy creation of a web
 
 A Page based on HTML5 Bootstrap. A HTTP GET request, returns the page with updated image. A POST request with correct form data can either load next, previous or refresh the current image.
 
-![Photoframe Web](docs/Photoframe Web.gif)
+![Photoframe Web](/docs/Photoframe Web.gif)
 
 ##### REST API
 
