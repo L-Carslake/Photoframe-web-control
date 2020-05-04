@@ -3,6 +3,7 @@
 *** make this better, please fork the Photoframe-web-control and create a pull request or simply open
 *** an issue with the tag "enhancement".
 *** Thanks again! Now go create something AMAZING! :D
+
 ***
 ***
 ***
@@ -109,8 +110,8 @@ git clone https://github.com/L-Carslake/Photoframe-web-control.git
 /usr/bin/python3 -u -m flask run --host=0.0.0.0
 ```
 
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 With the server running you can access the link printed by the script or http://YOUR-IP:5000. 
@@ -119,21 +120,58 @@ With the server running you can access the link printed by the script or http://
 ## Theory of Operation
 
 ### Feh Slideshow
-Feh is a basic image viewer. Controlled using keyboard shortcuts, which are sent from this python script using the PyUserInput library. [Documentation of  feh keyboard shortcuts](https://man.finalrewind.org/1/feh/#keys). Implemented are, next, previous, and action0.ln
+Feh is a basic image viewer. Controlled using keyboard shortcuts, which are sent from this python script using the PyUserInput library. [Documentation of  feh keyboard shortcuts](https://man.finalrewind.org/1/feh/#keys). Implemented are: next, previous, and action_0. 
 
-The image that is currently being viewed is written to a file for reading by the python script. Feh implements this as an  action, controlled as a command line argument:
+__Action 0:__ The filename of image that is currently being viewed is written to a file. This can then be read by the python script. Feh implements this as an action:
+
 ```sh
  --action ";echo %f > /Images/currentImage.txt"
 ```
-When called the current image name is written to the "/Images/currentImage.txt" file.
+i.e. When called, the current image name is written to the "/Images/currentImage.txt" file.
 
 ### Flask server
- - Webpage with functions
 
-### REST API
- - Homeassistant
- - Volumio API
- - URLS
+Flask is a micro-webframework for Python. This allows for easy creation of a web server, hosting a website and API. These are implemented as routes, which translate a web address to a python function.
+
+##### Webpage
+
+A Page based on HTML5 Bootstrap. A HTTP GET request, returns the page with updated image. A POST request with correct form data can either load next, previous or refresh the current image.
+
+![Photoframe Web](docs/Photoframe Web.gif)
+
+##### REST API
+
+An API was implemeted to alllow contol from smart home software, [Home Assistant](https://www.home-assistant.io). The API, follows the [specification](https://volumio.github.io/docs/API/REST_API.html) created for the Volumio Hi-Fi system. This was chosen as it was well documented and integrated into home-assistant as a media player.
+
+The API commands implemented and functioning are: __Next, Previous and GetState__. Other commands are added but have no functionality, apart from proving a HTTP 200 return code, to stop errors in Home Assistant. 
+
+###### Next
+
+`/api/v1/commands/next`
+
+Returns HTTP 200 success.
+
+###### Previous
+
+`/api/v1/commands/previous`
+
+Returns HTTP 200 success.
+
+###### Get State
+
+`/api/v1/getState/`
+
+Returns a JSON file with current state information, some lines removed:
+
+```json
+{  "status": "play",
+           "title": "Photoframe",
+           "artist": get_current_image_name(), 
+           "albumart": "/cdn/" + get_current_image_name()
+         }
+```
+
+[Further information in the Volumio API Documentation](https://volumio.github.io/docs/API/REST_API.html)
 
 <!-- ROADMAP -->
 
@@ -141,8 +179,8 @@ When called the current image name is written to the "/Images/currentImage.txt" 
 
 See the [open issues](https://github.com/L-Carslake/Photoframe-web-control/issues) for a list of proposed features (and known issues).
 
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
