@@ -72,7 +72,7 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-An addition for the digital photoframe project; based on a [feh](https://feh.finalrewind.org) slideshow. Providing control for next/previous image and viewing the current image.
+An addition to my digital photoframe project; based on a [feh](https://feh.finalrewind.org) slideshow. Providing control for next/previous image and viewing the current image.
 Implemented as a web page, and REST API.  
 
 
@@ -121,7 +121,7 @@ With the server running you can access the link printed by the script or http://
 ### Feh Slideshow
 Feh is a basic image viewer. Controlled using keyboard shortcuts, which are sent from this python script using the PyUserInput library. [Documentation of  feh keyboard shortcuts](https://man.finalrewind.org/1/feh/#keys). Implemented are: next, previous, and action_0. 
 
-__Action 0:__ The filename of image that is currently being viewed is written to a file. This can then be read by the python script. Feh implements this as an action:
+__Action 0:__ The filename of the image that is currently being viewed is written to a file. This can then be read by the python script. Feh implements this as an action:
 
 ```sh
  --action ";echo %f > /Images/currentImage.txt"
@@ -130,17 +130,17 @@ i.e. When called, the current image name is written to the "/Images/currentImage
 
 ### Flask server
 
-Flask is a micro-webframework for Python. This allows for easy creation of a web server, hosting a website and API. These are implemented as routes, which translate a web address to a python function.
+Flask is a micro-web-framework for Python. This allows for easy creation of a web server, hosting a website and API. These are implemented as routes, which translate a web address to a python function.
 
 ##### Webpage
 
-A Page based on HTML5 Bootstrap. A HTTP GET request, returns the page with updated image. A POST request with correct form data can either load next, previous or refresh the current image.
+A Page based on HTML5 Bootstrap. A HTTP GET request, returns the page with an updated image. A POST request with correct form data can either load next, previous or refresh the current image.
 
 ![Photoframe Web](/docs/Photoframe Web.gif)
 
 ##### REST API
 
-An API was implemeted to alllow contol from smart home software, [Home Assistant](https://www.home-assistant.io). The API, follows the [specification](https://volumio.github.io/docs/API/REST_API.html) created for the Volumio Hi-Fi system. This was chosen as it was well documented and integrated into home-assistant as a media player.
+An API was implemented to allow control from smart home software, [Home Assistant](https://www.home-assistant.io). The API follows the [specification](https://volumio.github.io/docs/API/REST_API.html) created for the Volumio Hi-Fi system. This was chosen as it was well documented and integrated into home-assistant as a media player.
 
 The API commands implemented and functioning are: __Next, Previous and GetState__. Other commands are added but have no functionality, apart from proving a HTTP 200 return code, to stop errors in Home Assistant. 
 
