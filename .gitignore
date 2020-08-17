@@ -1,5 +1,9 @@
 /.idea/
 /venv/
+<<<<<<< HEAD
 .idea
 __pycache__
 app.pyc
+=======
+.DS_Store
+>>>>>>> b45d8cae2c7862b4568bc9fe3a347070ff7e8354

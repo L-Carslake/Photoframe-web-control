@@ -55,7 +55,6 @@ def commands():
         return ""
     return "", 404
 
-
 @app.route('/api/v1/getState/')
 def getstate():
     update_current_image_file()
@@ -86,6 +85,28 @@ def getstate():
                "service": "mpd"
              }
     return state
+
+@app.route('/api/v1/getSystemInfo/')
+def getSystemInfo():
+    info = {  "id": "b8507fe7-dc48-40df-8ef4-4d0fff88dc05",
+              "host": "http://192.168.0.63",
+              "name": "Photoframe",
+              "type": "device",
+              "serviceName": "Volumio",
+              "systemversion": "2.803",
+              "builddate": "Tue Jul 28 21:28:37 CEST 2020",
+              "variant": "media",
+              "hardware": "Photoframe"
+             }
+    return info
+
+@app.route('/api/v1/getSystemVersion/')
+def getSystemVersion():
+    version = {"systemversion":"2.632",
+               "builddate":"Thu Oct  3 21:47:57 CEST 2019",
+               "variant":"media",
+               "hardware":"Photoframe"}
+    return version
 
 
 @app.route('/api/v1/listplaylists/')
