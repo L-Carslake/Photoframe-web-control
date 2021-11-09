@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, send_from_directory
 import os
+from os.path import isfile, join
 from pykeyboard import PyKeyboard
 import time
 
@@ -113,6 +114,26 @@ def getSystemVersion():
 def list_playlists():
     return {}
 
+@app.route('/api/v1/browse/')
+def browse():
+    if "uri" not in request.args:
+        top_level_navigation = {
+                    "navigation": {
+                        "lists": [
+                            {
+                                "albumart": "",
+                                "name": "Images",
+                                "uri": "Images",
+                                "plugin_type": "music_service",
+                                "plugin_name": "mpd"
+                            }
+                        ]
+                    }
+                }
+        return top_level_navigation
+    else:
+        media_list = list_images()
+        return media_list
 
 def next_image():
     # Next image
@@ -143,4 +164,38 @@ def get_current_image_name():
     split_path = path.split("/")
     print(split_path[2])
     return split_path[2]
+
+def list_images():
+    file_names = [f for f in os.listdir("/Images") if isfile(join("/Images", f))]
+    structured_files = []
+    for file in file_names:
+        structured_files.append({
+            "service": "mpd",
+            "type": "song",
+            "title": file,
+            "artist": "",
+            "album": "Images",
+            "uri": "/cdn/" + file,
+            "albumart": "/cdn/" + file
+            }
+        )
+
+    media_list = {
+        "navigation": {
+            "prev": {
+                "uri": "music-library"
+            },
+            "lists": [
+                {
+                    "availableListViews": [
+                        "grid",
+                        "list"
+                    ],
+                    "items": structured_files
+                }
+            ]
+        }
+    }
+    return media_list
+
 
