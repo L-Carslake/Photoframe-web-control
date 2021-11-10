@@ -73,10 +73,10 @@ def getstate():
     time.sleep(0.4)  # Waits for image to be reloaded
     state = {"status": "play",
              "position": 2,
-             "title": "Test Frame",
+             "title": "",
              "artist": get_current_image_name(),
              "album": "",
-             "albumart": "/cdn/" + get_current_image_name(),
+             "albumart": "/cdn/Thumbnails/" + get_current_image_name(),
              "uri": "",
              "trackType": "",
              "seek": 53057,
