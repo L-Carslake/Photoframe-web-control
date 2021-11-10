@@ -1,0 +1,13 @@
+[Unit]
+Description=Photoframe Control Server Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+# Command to execute when the service is started
+ExecStart=/bin/bash /home/lawrence/Photoframe-web-control/startServer.sh
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
